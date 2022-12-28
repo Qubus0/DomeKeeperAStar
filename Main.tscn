@@ -1,0 +1,626 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://Main.gd" type="Script" id=1]
+[ext_resource path="res://density_map.tres" type="TileSet" id=2]
+[ext_resource path="res://AstarDebug.gd" type="Script" id=3]
+[ext_resource path="res://WASDcam.gd" type="Script" id=4]
+[ext_resource path="res://astar_path_tiles.png" type="Texture" id=5]
+[ext_resource path="res://Fonts/font_default.tres" type="DynamicFont" id=6]
+[ext_resource path="res://Stats.gd" type="Script" id=7]
+[ext_resource path="res://Input.gd" type="Script" id=8]
+[ext_resource path="res://Fonts/font_bordered.tres" type="DynamicFont" id=9]
+[ext_resource path="res://default_theme.tres" type="Theme" id=11]
+
+[sub_resource type="Gradient" id=6]
+offsets = PoolRealArray( 0, 0.1, 0.3, 0.8 )
+colors = PoolColorArray( 0.298039, 0.823529, 0.345098, 1, 0.160784, 0.207843, 0.937255, 1, 0.94902, 0.137255, 0.137255, 1, 0.180392, 0.00392157, 0.00392157, 1 )
+
+[sub_resource type="TileSet" id=7]
+0/name = "astar_path_tiles.png 0"
+0/texture = ExtResource( 5 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 0, 24, 24 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape_one_way = false
+0/shape_one_way_margin = 0.0
+0/shapes = [  ]
+0/z_index = 0
+1/name = "astar_path_tiles.png 1"
+1/texture = ExtResource( 5 )
+1/tex_offset = Vector2( 0, 0 )
+1/modulate = Color( 1, 1, 1, 1 )
+1/region = Rect2( 24, 0, 24, 24 )
+1/tile_mode = 0
+1/occluder_offset = Vector2( 0, 0 )
+1/navigation_offset = Vector2( 0, 0 )
+1/shape_offset = Vector2( 0, 0 )
+1/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+1/shape_one_way = false
+1/shape_one_way_margin = 0.0
+1/shapes = [  ]
+1/z_index = 0
+2/name = "astar_path_tiles.png 2"
+2/texture = ExtResource( 5 )
+2/tex_offset = Vector2( 0, 0 )
+2/modulate = Color( 1, 1, 1, 1 )
+2/region = Rect2( 48, 0, 24, 24 )
+2/tile_mode = 0
+2/occluder_offset = Vector2( 0, 0 )
+2/navigation_offset = Vector2( 0, 0 )
+2/shape_offset = Vector2( 0, 0 )
+2/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+2/shape_one_way = false
+2/shape_one_way_margin = 0.0
+2/shapes = [  ]
+2/z_index = 0
+3/name = "astar_path_tiles.png 3"
+3/texture = ExtResource( 5 )
+3/tex_offset = Vector2( 0, 0 )
+3/modulate = Color( 1, 1, 1, 1 )
+3/region = Rect2( 72, 0, 24, 24 )
+3/tile_mode = 0
+3/occluder_offset = Vector2( 0, 0 )
+3/navigation_offset = Vector2( 0, 0 )
+3/shape_offset = Vector2( 0, 0 )
+3/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+3/shape_one_way = false
+3/shape_one_way_margin = 0.0
+3/shapes = [  ]
+3/z_index = 0
+4/name = "astar_path_tiles.png 4"
+4/texture = ExtResource( 5 )
+4/tex_offset = Vector2( 0, 0 )
+4/modulate = Color( 1, 1, 1, 1 )
+4/region = Rect2( 96, 0, 24, 24 )
+4/tile_mode = 0
+4/occluder_offset = Vector2( 0, 0 )
+4/navigation_offset = Vector2( 0, 0 )
+4/shape_offset = Vector2( 0, 0 )
+4/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+4/shape_one_way = false
+4/shape_one_way_margin = 0.0
+4/shapes = [  ]
+4/z_index = 0
+5/name = "astar_path_tiles.png 5"
+5/texture = ExtResource( 5 )
+5/tex_offset = Vector2( 0, 0 )
+5/modulate = Color( 1, 1, 1, 1 )
+5/region = Rect2( 0, 24, 24, 24 )
+5/tile_mode = 0
+5/occluder_offset = Vector2( 0, 0 )
+5/navigation_offset = Vector2( 0, 0 )
+5/shape_offset = Vector2( 0, 0 )
+5/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+5/shape_one_way = false
+5/shape_one_way_margin = 0.0
+5/shapes = [  ]
+5/z_index = 0
+6/name = "astar_path_tiles.png 6"
+6/texture = ExtResource( 5 )
+6/tex_offset = Vector2( 0, 0 )
+6/modulate = Color( 1, 1, 1, 1 )
+6/region = Rect2( 24, 24, 24, 24 )
+6/tile_mode = 0
+6/occluder_offset = Vector2( 0, 0 )
+6/navigation_offset = Vector2( 0, 0 )
+6/shape_offset = Vector2( 0, 0 )
+6/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+6/shape_one_way = false
+6/shape_one_way_margin = 0.0
+6/shapes = [  ]
+6/z_index = 0
+7/name = "astar_path_tiles.png 7"
+7/texture = ExtResource( 5 )
+7/tex_offset = Vector2( 0, 0 )
+7/modulate = Color( 1, 1, 1, 1 )
+7/region = Rect2( 48, 24, 24, 24 )
+7/tile_mode = 0
+7/occluder_offset = Vector2( 0, 0 )
+7/navigation_offset = Vector2( 0, 0 )
+7/shape_offset = Vector2( 0, 0 )
+7/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+7/shape_one_way = false
+7/shape_one_way_margin = 0.0
+7/shapes = [  ]
+7/z_index = 0
+8/name = "astar_path_tiles.png 8"
+8/texture = ExtResource( 5 )
+8/tex_offset = Vector2( 0, 0 )
+8/modulate = Color( 1, 1, 1, 1 )
+8/region = Rect2( 72, 24, 24, 24 )
+8/tile_mode = 0
+8/occluder_offset = Vector2( 0, 0 )
+8/navigation_offset = Vector2( 0, 0 )
+8/shape_offset = Vector2( 0, 0 )
+8/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+8/shape_one_way = false
+8/shape_one_way_margin = 0.0
+8/shapes = [  ]
+8/z_index = 0
+9/name = "astar_path_tiles.png 9"
+9/texture = ExtResource( 5 )
+9/tex_offset = Vector2( 0, 0 )
+9/modulate = Color( 1, 1, 1, 1 )
+9/region = Rect2( 96, 24, 24, 24 )
+9/tile_mode = 0
+9/occluder_offset = Vector2( 0, 0 )
+9/navigation_offset = Vector2( 0, 0 )
+9/shape_offset = Vector2( 0, 0 )
+9/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+9/shape_one_way = false
+9/shape_one_way_margin = 0.0
+9/shapes = [  ]
+9/z_index = 0
+10/name = "astar_path_tiles.png 10"
+10/texture = ExtResource( 5 )
+10/tex_offset = Vector2( 0, 0 )
+10/modulate = Color( 1, 1, 1, 1 )
+10/region = Rect2( 120, 24, 24, 24 )
+10/tile_mode = 0
+10/occluder_offset = Vector2( 0, 0 )
+10/navigation_offset = Vector2( 0, 0 )
+10/shape_offset = Vector2( 0, 0 )
+10/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+10/shape_one_way = false
+10/shape_one_way_margin = 0.0
+10/shapes = [  ]
+10/z_index = 0
+11/name = "astar_path_tiles.png 11"
+11/texture = ExtResource( 5 )
+11/tex_offset = Vector2( 0, 0 )
+11/modulate = Color( 1, 1, 1, 1 )
+11/region = Rect2( 144, 24, 24, 24 )
+11/tile_mode = 0
+11/occluder_offset = Vector2( 0, 0 )
+11/navigation_offset = Vector2( 0, 0 )
+11/shape_offset = Vector2( 0, 0 )
+11/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+11/shape_one_way = false
+11/shape_one_way_margin = 0.0
+11/shapes = [  ]
+11/z_index = 0
+12/name = "astar_path_tiles.png 12"
+12/texture = ExtResource( 5 )
+12/tex_offset = Vector2( 0, 0 )
+12/modulate = Color( 1, 1, 1, 1 )
+12/region = Rect2( 168, 24, 24, 24 )
+12/tile_mode = 0
+12/occluder_offset = Vector2( 0, 0 )
+12/navigation_offset = Vector2( 0, 0 )
+12/shape_offset = Vector2( 0, 0 )
+12/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+12/shape_one_way = false
+12/shape_one_way_margin = 0.0
+12/shapes = [  ]
+12/z_index = 0
+13/name = "astar_path_tiles.png 13"
+13/texture = ExtResource( 5 )
+13/tex_offset = Vector2( 0, 0 )
+13/modulate = Color( 1, 1, 1, 1 )
+13/region = Rect2( 192, 24, 24, 24 )
+13/tile_mode = 0
+13/occluder_offset = Vector2( 0, 0 )
+13/navigation_offset = Vector2( 0, 0 )
+13/shape_offset = Vector2( 0, 0 )
+13/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+13/shape_one_way = false
+13/shape_one_way_margin = 0.0
+13/shapes = [  ]
+13/z_index = 0
+14/name = "astar_path_tiles.png 14"
+14/texture = ExtResource( 5 )
+14/tex_offset = Vector2( 0, 0 )
+14/modulate = Color( 1, 1, 1, 1 )
+14/region = Rect2( 216, 24, 24, 24 )
+14/tile_mode = 0
+14/occluder_offset = Vector2( 0, 0 )
+14/navigation_offset = Vector2( 0, 0 )
+14/shape_offset = Vector2( 0, 0 )
+14/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+14/shape_one_way = false
+14/shape_one_way_margin = 0.0
+14/shapes = [  ]
+14/z_index = 0
+15/name = "astar_path_tiles.png 15"
+15/texture = ExtResource( 5 )
+15/tex_offset = Vector2( 0, 0 )
+15/modulate = Color( 1, 1, 1, 1 )
+15/region = Rect2( 240, 24, 24, 24 )
+15/tile_mode = 0
+15/occluder_offset = Vector2( 0, 0 )
+15/navigation_offset = Vector2( 0, 0 )
+15/shape_offset = Vector2( 0, 0 )
+15/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+15/shape_one_way = false
+15/shape_one_way_margin = 0.0
+15/shapes = [  ]
+15/z_index = 0
+16/name = "astar_path_tiles.png 16"
+16/texture = ExtResource( 5 )
+16/tex_offset = Vector2( 0, 0 )
+16/modulate = Color( 1, 1, 1, 1 )
+16/region = Rect2( 264, 24, 24, 24 )
+16/tile_mode = 0
+16/occluder_offset = Vector2( 0, 0 )
+16/navigation_offset = Vector2( 0, 0 )
+16/shape_offset = Vector2( 0, 0 )
+16/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+16/shape_one_way = false
+16/shape_one_way_margin = 0.0
+16/shapes = [  ]
+16/z_index = 0
+17/name = "astar_path_tiles.png 17"
+17/texture = ExtResource( 5 )
+17/tex_offset = Vector2( 0, 0 )
+17/modulate = Color( 1, 1, 1, 1 )
+17/region = Rect2( 288, 24, 24, 24 )
+17/tile_mode = 0
+17/occluder_offset = Vector2( 0, 0 )
+17/navigation_offset = Vector2( 0, 0 )
+17/shape_offset = Vector2( 0, 0 )
+17/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+17/shape_one_way = false
+17/shape_one_way_margin = 0.0
+17/shapes = [  ]
+17/z_index = 0
+18/name = "astar_path_tiles.png 18"
+18/texture = ExtResource( 5 )
+18/tex_offset = Vector2( 0, 0 )
+18/modulate = Color( 1, 1, 1, 1 )
+18/region = Rect2( 312, 24, 24, 24 )
+18/tile_mode = 0
+18/occluder_offset = Vector2( 0, 0 )
+18/navigation_offset = Vector2( 0, 0 )
+18/shape_offset = Vector2( 0, 0 )
+18/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+18/shape_one_way = false
+18/shape_one_way_margin = 0.0
+18/shapes = [  ]
+18/z_index = 0
+19/name = "astar_path_tiles.png 19"
+19/texture = ExtResource( 5 )
+19/tex_offset = Vector2( 0, 0 )
+19/modulate = Color( 1, 1, 1, 1 )
+19/region = Rect2( 336, 24, 24, 24 )
+19/tile_mode = 0
+19/occluder_offset = Vector2( 0, 0 )
+19/navigation_offset = Vector2( 0, 0 )
+19/shape_offset = Vector2( 0, 0 )
+19/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+19/shape_one_way = false
+19/shape_one_way_margin = 0.0
+19/shapes = [  ]
+19/z_index = 0
+20/name = "astar_path_tiles.png 20"
+20/texture = ExtResource( 5 )
+20/tex_offset = Vector2( 0, 0 )
+20/modulate = Color( 1, 1, 1, 1 )
+20/region = Rect2( 360, 24, 24, 24 )
+20/tile_mode = 0
+20/occluder_offset = Vector2( 0, 0 )
+20/navigation_offset = Vector2( 0, 0 )
+20/shape_offset = Vector2( 0, 0 )
+20/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+20/shape_one_way = false
+20/shape_one_way_margin = 0.0
+20/shapes = [  ]
+20/z_index = 0
+
+[sub_resource type="StyleBoxEmpty" id=3]
+
+[sub_resource type="GradientTexture" id=5]
+gradient = SubResource( 6 )
+width = 500
+
+[node name="Main" type="Node2D"]
+script = ExtResource( 1 )
+density_colors = SubResource( 6 )
+
+[node name="WASDcam" type="Camera2D" parent="."]
+position = Vector2( 0, 307 )
+current = true
+zoom = Vector2( 1.4, 1.4 )
+smoothing_enabled = true
+smoothing_speed = 10.0
+editor_draw_limits = true
+script = ExtResource( 4 )
+speed = 15
+
+[node name="Debug" type="Node2D" parent="."]
+script = ExtResource( 3 )
+
+[node name="Density" type="TileMap" parent="Debug"]
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 24, 24 )
+cell_quadrant_size = 32
+format = 1
+
+[node name="Paths" type="TileMap" parent="Debug"]
+tile_set = SubResource( 7 )
+cell_size = Vector2( 24, 24 )
+cell_quadrant_size = 32
+format = 1
+
+[node name="Paths1" type="TileMap" parent="Debug/Paths"]
+tile_set = SubResource( 7 )
+cell_size = Vector2( 24, 24 )
+cell_quadrant_size = 32
+format = 1
+
+[node name="Paths2" type="TileMap" parent="Debug/Paths"]
+tile_set = SubResource( 7 )
+cell_size = Vector2( 24, 24 )
+cell_quadrant_size = 32
+format = 1
+
+[node name="Paths3" type="TileMap" parent="Debug/Paths"]
+tile_set = SubResource( 7 )
+cell_size = Vector2( 24, 24 )
+cell_quadrant_size = 32
+format = 1
+
+[node name="Paths4" type="TileMap" parent="Debug/Paths"]
+tile_set = SubResource( 7 )
+cell_size = Vector2( 24, 24 )
+cell_quadrant_size = 32
+format = 1
+
+[node name="Paths5" type="TileMap" parent="Debug/Paths"]
+tile_set = SubResource( 7 )
+cell_size = Vector2( 24, 24 )
+cell_quadrant_size = 32
+format = 1
+
+[node name="Paths6" type="TileMap" parent="Debug/Paths"]
+tile_set = SubResource( 7 )
+cell_size = Vector2( 24, 24 )
+cell_quadrant_size = 32
+format = 1
+
+[node name="Paths7" type="TileMap" parent="Debug/Paths"]
+tile_set = SubResource( 7 )
+cell_size = Vector2( 24, 24 )
+cell_quadrant_size = 32
+format = 1
+
+[node name="Paths8" type="TileMap" parent="Debug/Paths"]
+tile_set = SubResource( 7 )
+cell_size = Vector2( 24, 24 )
+cell_quadrant_size = 32
+format = 1
+
+[node name="Paths9" type="TileMap" parent="Debug/Paths"]
+tile_set = SubResource( 7 )
+cell_size = Vector2( 24, 24 )
+cell_quadrant_size = 32
+format = 1
+
+[node name="Paths10" type="TileMap" parent="Debug/Paths"]
+tile_set = SubResource( 7 )
+cell_size = Vector2( 24, 24 )
+cell_quadrant_size = 32
+format = 1
+
+[node name="Paths11" type="TileMap" parent="Debug/Paths"]
+tile_set = SubResource( 7 )
+cell_size = Vector2( 24, 24 )
+cell_quadrant_size = 32
+format = 1
+
+[node name="Paths12" type="TileMap" parent="Debug/Paths"]
+tile_set = SubResource( 7 )
+cell_size = Vector2( 24, 24 )
+cell_quadrant_size = 32
+format = 1
+
+[node name="Paths13" type="TileMap" parent="Debug/Paths"]
+tile_set = SubResource( 7 )
+cell_size = Vector2( 24, 24 )
+cell_quadrant_size = 32
+format = 1
+
+[node name="Paths14" type="TileMap" parent="Debug/Paths"]
+tile_set = SubResource( 7 )
+cell_size = Vector2( 24, 24 )
+cell_quadrant_size = 32
+format = 1
+
+[node name="Paths15" type="TileMap" parent="Debug/Paths"]
+tile_set = SubResource( 7 )
+cell_size = Vector2( 24, 24 )
+cell_quadrant_size = 32
+format = 1
+
+[node name="Paths16" type="TileMap" parent="Debug/Paths"]
+tile_set = SubResource( 7 )
+cell_size = Vector2( 24, 24 )
+cell_quadrant_size = 32
+format = 1
+
+[node name="Interaction" type="TileMap" parent="Debug"]
+tile_set = SubResource( 7 )
+cell_size = Vector2( 24, 24 )
+cell_quadrant_size = 32
+format = 1
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+theme = ExtResource( 11 )
+custom_constants/margin_right = 10
+custom_constants/margin_top = 10
+custom_constants/margin_left = 10
+custom_constants/margin_bottom = 10
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/MarginContainer"]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 1014.0
+margin_bottom = 590.0
+mouse_filter = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/MarginContainer/HBoxContainer"]
+margin_bottom = 580.0
+scroll_horizontal_enabled = false
+
+[node name="Stats" type="VBoxContainer" parent="CanvasLayer/MarginContainer/HBoxContainer/ScrollContainer"]
+mouse_filter = 2
+size_flags_horizontal = 3
+script = ExtResource( 7 )
+
+[node name="Spacer" type="MarginContainer" parent="CanvasLayer/MarginContainer/HBoxContainer"]
+margin_left = 4.0
+margin_right = 746.0
+margin_bottom = 580.0
+mouse_filter = 2
+size_flags_horizontal = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer/HBoxContainer"]
+margin_left = 750.0
+margin_right = 1004.0
+margin_bottom = 580.0
+mouse_filter = 2
+custom_constants/separation = 12
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/MarginContainer/HBoxContainer/VBoxContainer"]
+margin_right = 254.0
+margin_bottom = 30.0
+mouse_filter = 2
+custom_constants/separation = 12
+alignment = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="CanvasLayer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+margin_top = 5.0
+margin_right = 136.0
+margin_bottom = 25.0
+custom_fonts/font = ExtResource( 9 )
+text = "Drill Power Level"
+
+[node name="DrillPower" type="LineEdit" parent="CanvasLayer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+margin_left = 148.0
+margin_right = 254.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 80, 0 )
+align = 2
+context_menu_enabled = false
+placeholder_text = "0"
+script = ExtResource( 8 )
+
+[node name="CheckBox" type="CheckButton" parent="CanvasLayer/MarginContainer/HBoxContainer/VBoxContainer"]
+margin_top = 42.0
+margin_right = 254.0
+margin_bottom = 74.0
+hint_tooltip = "important for speedruns to always take the optimal entry spot"
+custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
+custom_colors/font_color_focus = Color( 0, 0, 0, 1 )
+custom_colors/font_color_hover_pressed = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 9 )
+custom_styles/hover = SubResource( 3 )
+custom_styles/pressed = SubResource( 3 )
+custom_styles/focus = SubResource( 3 )
+custom_styles/disabled = SubResource( 3 )
+custom_styles/hover_pressed = SubResource( 3 )
+custom_styles/normal = SubResource( 3 )
+pressed = true
+text = "Ignore Relic Density"
+flat = true
+align = 2
+
+[node name="ScaleDisplay" type="HBoxContainer" parent="CanvasLayer/MarginContainer/HBoxContainer/VBoxContainer"]
+margin_top = 86.0
+margin_right = 254.0
+margin_bottom = 116.0
+alignment = 2
+
+[node name="Gradient" type="TextureRect" parent="CanvasLayer/MarginContainer/HBoxContainer/VBoxContainer/ScaleDisplay"]
+margin_left = 54.0
+margin_right = 254.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 200, 30 )
+texture = SubResource( 5 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Margin" type="MarginContainer" parent="CanvasLayer/MarginContainer/HBoxContainer/VBoxContainer/ScaleDisplay/Gradient"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/margin_right = 5
+custom_constants/margin_top = 5
+custom_constants/margin_left = 5
+custom_constants/margin_bottom = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Text" type="HBoxContainer" parent="CanvasLayer/MarginContainer/HBoxContainer/VBoxContainer/ScaleDisplay/Gradient/Margin"]
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 195.0
+margin_bottom = 25.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Low" type="Label" parent="CanvasLayer/MarginContainer/HBoxContainer/VBoxContainer/ScaleDisplay/Gradient/Margin/Text"]
+margin_right = 48.0
+margin_bottom = 20.0
+custom_fonts/font = ExtResource( 9 )
+text = "0 hits"
+
+[node name="Spacer" type="MarginContainer" parent="CanvasLayer/MarginContainer/HBoxContainer/VBoxContainer/ScaleDisplay/Gradient/Margin/Text"]
+margin_left = 52.0
+margin_right = 154.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+
+[node name="High" type="Label" parent="CanvasLayer/MarginContainer/HBoxContainer/VBoxContainer/ScaleDisplay/Gradient/Margin/Text"]
+margin_left = 158.0
+margin_right = 190.0
+margin_bottom = 20.0
+custom_fonts/font = ExtResource( 9 )
+text = "300+"
+
+[node name="Tooltip" type="PanelContainer" parent="CanvasLayer"]
+visible = false
+margin_left = -56.0
+margin_top = -48.0
+margin_right = -46.0
+margin_bottom = -16.0
+mouse_filter = 2
+theme = ExtResource( 11 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="CanvasLayer/Tooltip"]
+margin_left = 5.0
+margin_top = 6.0
+margin_right = 5.0
+margin_bottom = 26.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 6 )
+
+[connection signal="text_changed" from="CanvasLayer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/DrillPower" to="." method="_on_DrillPower_text_changed"]
+[connection signal="toggled" from="CanvasLayer/MarginContainer/HBoxContainer/VBoxContainer/CheckBox" to="." method="_on_CheckBox_toggled"]
